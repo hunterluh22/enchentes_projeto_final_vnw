@@ -7,7 +7,7 @@
 4. Estrutura do Sistema:
 
 # Front-end
-Interface simples em HTML e JavaScript para listar e cadastrar abrigos.
+Interface simples em HTML, CSS e JavaScript para listar e cadastrar abrigos.
 
 # Back-end
 API desenvolvida com Node.js e Express.
