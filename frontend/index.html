@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Abrigos</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Abrigos Disponíveis</h1>
+
+<ul id="lista"></ul>
+
+<h2>Cadastrar Abrigo</h2>
+
+<div class="form">
+<input id="nome" placeholder="Nome"><br>
+<input id="endereco" placeholder="Endereço"><br>
+<input id="total" placeholder="Capacidade total"><br>
+<input id="atual" placeholder="Capacidade atual"><br>
+
+<button onclick="cadastrar()">Cadastrar</button>
+</div>
+<script>
+
+function carregar() {
+  fetch("http://localhost:3000/abrigos")
+    .then(res => res.json())
+    .then(data => {
+      const lista = document.getElementById("lista");
+      lista.innerHTML = "";
+
+      data.forEach(a => {
+        const li = document.createElement ("li");
+        li.innerText = `${a.nome} - ${a.capacidade_atual}/${a.capacidade_total}`;
+        lista.appendChild(li);
+      });
+    });
+}
+
+
+function cadastrar() {
+  fetch("http://localhost:3000/abrigos", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      nome: document.getElementById("nome").value,
+      endereco: document.getElementById("endereco").value,
+      capacidade_total: Number(document.getElementById("total").value),
+      capacidade_atual: Number(document.getElementById("atual").value)
+    })
+  })
+  .then(() => carregar());
+}
+
+carregar();
+</script>
+
+</body>
+</html>
