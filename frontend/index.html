@@ -24,7 +24,7 @@
 <script>
 
 function carregar() {
-  fetch("https://enchentes-projeto-final-vnw-1.onrender.com/abrigos")
+  fetch("https://enchentes-projeto-final-vnw-2.onrender.com")
     .then(res => res.json())
     .then(data => {
       const lista = document.getElementById("lista");
@@ -40,7 +40,7 @@ function carregar() {
 
 
 function cadastrar() {
-  fetch("http://localhost:3000/abrigos", {
+  fetch("https://enchentes-projeto-final-vnw-2.onrender.com", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
