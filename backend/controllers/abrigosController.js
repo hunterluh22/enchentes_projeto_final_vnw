@@ -1,4 +1,4 @@
-const db = require("../db/connection");
+const db = require("./db/connection");
 
 exports.getAbrigos = async (req, res) => {
   const result = await db.query("SELECT * FROM abrigos");
